@@ -1,0 +1,101 @@
+{
+  "name": "iterable-backoff",
+  "version": "0.0.0",
+  "license": "ISC",
+  "description": "Backoff generators usable as simple iterables",
+  "keywords": [
+    "back-off",
+    "back",
+    "backoff",
+    "exponential",
+    "fibonacci",
+    "generator",
+    "iterable",
+    "iterator",
+    "noise",
+    "off",
+    "power"
+  ],
+  "homepage": "https://github.com/JsCommunity/iterable-backoff",
+  "bugs": "https://github.com/JsCommunity/iterable-backoff/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JsCommunity/iterable-backoff"
+  },
+  "author": {
+    "name": "Julien Fontanet",
+    "email": "julien.fontanet@isonoe.net"
+  },
+  "preferGlobal": false,
+  "main": "dist/",
+  "bin": {},
+  "files": [
+    "dist/"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "commitizen": "^2.9.6",
+    "cross-env": "^5.1.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "dependency-check": "^2.9.1",
+    "flow-bin": "^0.57.3",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "rimraf": "^2.6.2",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production babel --source-maps --out-dir=dist/ src/",
+    "commitmsg": "npm test",
+    "cz": "git-cz",
+    "dev": "cross-env NODE_ENV=development babel --watch --source-maps --out-dir=dist/ src/",
+    "dev-test": "jest --bail --watch",
+    "posttest": "dependency-check ./package.json",
+    "prebuild": "rimraf dist/",
+    "predev": "npm run prebuild",
+    "prepublish": "npm run build",
+    "pretest": "standard --fix && flow status",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "debug": true,
+          "loose": true,
+          "targets": {
+            "node": 6
+          }
+        }
+      ],
+      "flow"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testRegex": "\\.spec\\.js$"
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ],
+    "parser": "babel-eslint"
+  }
+}
