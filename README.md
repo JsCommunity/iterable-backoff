@@ -37,7 +37,7 @@ async function fetch (url) {
 
 #### `power(power = 2)`
 
-[Exponential sequence](https://en.wikipedia.org/wiki/Power_function)
+[Power sequence](https://en.wikipedia.org/wiki/Power_function)
 
 #### `fibonacci()`
 
