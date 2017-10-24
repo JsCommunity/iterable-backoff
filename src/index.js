@@ -58,7 +58,7 @@ class Iterator {
     })
   }
 
-  // converts to miliseconds (ie * 1e3)
+  // converts to milliseconds (ie * 1e3)
   toMs () {
     return this.map(x => Math.floor(x * 1e3))
   }

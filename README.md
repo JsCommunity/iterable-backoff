@@ -17,10 +17,10 @@ Installation of the [npm package](https://npmjs.org/package/iterable-backoff):
 ## Usage
 
 ```js
-import { factorial } from 'iterable-backoff'
+import { fibonacci } from 'iterable-backoff'
 
 async function fetch (url) {
-  for (const delay of factorial().toMs().take(5)) {
+  for (const delay of fibonacci().toMs().take(5)) {
     try {
       return await got(url) // or any promise-returning HTTP lib
     } catch (error) {
@@ -95,6 +95,16 @@ ever.
 
 ```js
 for (const delay of power().take(10)) {
+  // ...
+}
+```
+
+#### `toMs()`
+
+Converts the sequence's values to milliseconds (from seconds).
+
+```js
+for (const delay of exponential(3).take(10).toMs()) {
   // ...
 }
 ```
