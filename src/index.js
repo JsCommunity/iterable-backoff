@@ -16,6 +16,7 @@ class Iterator {
     this.next = next
   }
 
+  // $FlowFixMe https://github.com/facebook/flow/issues/2286
   [symbolIterator] () {
     return this
   }
@@ -47,12 +48,13 @@ class Iterator {
   }
 
   take (n: number) {
+    let i = 0
     return new Iterator(() => {
-      if (n < 1) {
-        return DONE
+      if (i < n) {
+        ++i
+        return this.next()
       }
-      --n
-      return this.next()
+      return DONE
     })
   }
 
