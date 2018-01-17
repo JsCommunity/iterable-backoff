@@ -65,11 +65,10 @@ class Iterator {
 }
 
 export const exponential = (base: number = 2) => {
-  let curr = base
+  let value = 1
 
   return new Iterator(() => {
-    const value = curr
-    curr *= base
+    value *= base
     return {
       done: false,
       value,
