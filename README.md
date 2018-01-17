@@ -126,9 +126,6 @@ for (const delay of exponential(3).take(10).toMs()) {
 
 # Build for production (automatically called by npm install)
 > yarn build
-
-# Commit changes
-> yarn cz
 ```
 
 ## Contributions

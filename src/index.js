@@ -42,7 +42,7 @@ class Iterator {
       }
       return {
         done: false,
-        value: fn(cursor.value)
+        value: fn(cursor.value),
       }
     })
   }
@@ -72,7 +72,7 @@ export const exponential = (base: number = 2) => {
     curr *= base
     return {
       done: false,
-      value
+      value,
     }
   })
 }
@@ -88,7 +88,7 @@ export const fibonacci = () => {
 
     return {
       done: false,
-      value
+      value,
     }
   })
 }
@@ -99,7 +99,7 @@ export const power = (power: number = 2) => {
   return new Iterator(() => {
     return {
       done: false,
-      value: i++ ** power
+      value: i++ ** power,
     }
   })
 }

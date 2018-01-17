@@ -4,7 +4,7 @@ import {
   exponential,
   fibonacci,
   power,
-  symbolIterator
+  symbolIterator,
 } from './'
 
 // ===================================================================
