@@ -17,19 +17,21 @@ Installation of the [npm package](https://npmjs.org/package/iterable-backoff):
 ## Usage
 
 ```js
-import { fibonacci } from 'iterable-backoff'
+import { fibonacci } from "iterable-backoff";
 
-async function fetch (url) {
-  for (const delay of fibonacci().toMs().take(5)) {
+async function fetch(url) {
+  for (const delay of fibonacci()
+    .toMs()
+    .take(5)) {
     try {
-      return await got(url) // or any promise-returning HTTP lib
+      return await got(url); // or any promise-returning HTTP lib
     } catch (error) {
-      console.warn(error)
-      await Bluebird.delay(delay) // or any promise-returning timer
+      console.warn(error);
+      await Bluebird.delay(delay); // or any promise-returning timer
     }
   }
 
-  throw new Error('too many tries')
+  throw new Error("too many tries");
 }
 ```
 
@@ -104,7 +106,9 @@ for (const delay of power().take(10)) {
 Converts the sequence's values to milliseconds (from seconds).
 
 ```js
-for (const delay of exponential(3).take(10).toMs()) {
+for (const delay of exponential(3)
+  .take(10)
+  .toMs()) {
   // ...
 }
 ```
@@ -113,24 +117,24 @@ for (const delay of exponential(3).take(10).toMs()) {
 
 ```
 # Install dependencies
-> yarn
+> npm ci
 
 # Run the tests
-> yarn test
+> npm test
 
 # Continuously compile
-> yarn dev
+> npm run dev
 
 # Continuously run the tests
-> yarn dev-test
+> npm run dev-test
 
 # Build for production (automatically called by npm install)
-> yarn build
+> npm run build
 ```
 
 ## Contributions
 
-Contributions are *very* welcomed, either on the documentation or on
+Contributions are _very_ welcomed, either on the documentation or on
 the code.
 
 You may:
