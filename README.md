@@ -37,6 +37,10 @@ async function fetch(url) {
 
 ### Generators
 
+#### `linear(slope = 1, intersect = 1)`
+
+[Linear function](<https://en.wikipedia.org/wiki/Linear_function_(calculus)>)
+
 #### `power(power = 2)`
 
 [Power sequence](https://en.wikipedia.org/wiki/Power_function)

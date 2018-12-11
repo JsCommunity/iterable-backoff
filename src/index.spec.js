@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { exponential, fibonacci, power, symbolIterator } from "./";
+import { exponential, fibonacci, linear, power, symbolIterator } from "./";
 
 // ===================================================================
 
@@ -34,6 +34,12 @@ describe("exponential()", () => {
 describe("fibonacci()", () => {
   it("returns an iterable", () => {
     testIterable(fibonacci(), [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]);
+  });
+});
+
+describe("linear()", () => {
+  it("returns an iterable", () => {
+    testIterable(linear(0.5, 2), [2, 2.5, 3, 3.5, 4, 4.5]);
   });
 });
 

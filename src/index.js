@@ -89,6 +89,14 @@ export const fibonacci = () => {
   });
 };
 
+export const linear = (slope: number = 1, intercept: number = 1) => {
+  let i = intercept - slope;
+  return new Iterator(() => ({
+    done: false,
+    value: (i += slope),
+  }));
+};
+
 export const power = (power: number = 2) => {
   let i = 1;
 
