@@ -48,9 +48,6 @@
   },
   "scripts": {
     "dev-test": "jest --bail --watch",
-    "prebuild": "npm run clean",
-    "predev": "npm run clean",
-    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "husky": {
