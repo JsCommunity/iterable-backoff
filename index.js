@@ -1,37 +1,26 @@
-// @flow
-
-export const symbolIterator =
-  (typeof Symbol !== "undefined" && Symbol.iterator) || "@@iterator";
-
-type Result = {| done: false, value: number |} | {| done: true |};
-type Next = () => Result;
-
-const DONE: Result = { done: true };
+const DONE = { done: true };
 
 const toMsMapper = x => Math.floor(x * 1e3);
 
 class Iterator {
-  next: Next;
-
-  constructor(next: Next) {
+  constructor(next) {
     this.next = next;
   }
 
-  // $FlowFixMe https://github.com/facebook/flow/issues/2286
-  [symbolIterator]() {
+  [Symbol.iterator]() {
     return this;
   }
 
   // add a percentage of noise
-  addNoise(factor: number = 0.1) {
+  addNoise(factor = 0.1) {
     return this.map(value => value * (1 + (Math.random() - 0.5) * factor));
   }
 
-  clamp(min: number, max: number) {
+  clamp(min, max) {
     return this.map(value => (value < min ? min : value > max ? max : value));
   }
 
-  map(fn: number => number) {
+  map(fn) {
     return new Iterator(() => {
       const cursor = this.next();
       if (cursor.done) {
@@ -44,7 +33,7 @@ class Iterator {
     });
   }
 
-  take(n: number) {
+  take(n) {
     let i = 0;
     return new Iterator(() => {
       if (i < n) {
@@ -61,7 +50,7 @@ class Iterator {
   }
 }
 
-export const exponential = (base: number = 2) => {
+exports.exponential = (base = 2) => {
   let value = 1;
 
   return new Iterator(() => {
@@ -73,7 +62,7 @@ export const exponential = (base: number = 2) => {
   });
 };
 
-export const fibonacci = () => {
+exports.fibonacci = () => {
   let curr = 1;
   let next = 1;
 
@@ -89,7 +78,7 @@ export const fibonacci = () => {
   });
 };
 
-export const linear = (slope: number = 1, intercept: number = 1) => {
+exports.linear = (slope = 1, intercept = 1) => {
   let i = intercept - slope;
   return new Iterator(() => ({
     done: false,
@@ -97,13 +86,13 @@ export const linear = (slope: number = 1, intercept: number = 1) => {
   }));
 };
 
-export const power = (power: number = 2) => {
+exports.power = (power = 2) => {
   let i = 1;
 
   return new Iterator(() => {
     return {
       done: false,
-      value: (i++) ** power,
+      value: Math.pow(i++, power),
     };
   });
 };

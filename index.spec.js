@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { exponential, fibonacci, linear, power, symbolIterator } from "./";
+const { exponential, fibonacci, linear, power } = require("./");
 
 // ===================================================================
 
@@ -8,8 +8,8 @@ const testIterable = (iterable, values) => {
   let iterator;
   if (
     iterable == null ||
-    typeof iterable[symbolIterator] !== "function" ||
-    typeof (iterator = iterable[symbolIterator]()).next !== "function"
+    typeof iterable[Symbol.iterator] !== "function" ||
+    typeof (iterator = iterable[Symbol.iterator]()).next !== "function"
   ) {
     throw new TypeError("is not iterable");
   }
